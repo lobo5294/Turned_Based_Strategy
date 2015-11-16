@@ -7,16 +7,16 @@ class unit(object):
         self.__hp=self.__stats[0]
         self.__movmentPoints=self.__stats[1]
         self.__attackPoints=self.__stats[2]
-        self.__texture=imageLoader("./units/"+name+".png")
-        self.__rectangle=self.__texture.get_rect()
-        self.__coordinates=[self.__rectangle.centerx,self.__rectangle.centery]
+        self.texture=imageLoader("./units/"+name+".png")
+        self.rectangle=self.texture.get_rect()
+        self.__coordinates=[self.rectangle.centerx, self.rectangle.centery]
         self.__isTurnOver=False
         self.__isDead=False
 
     def move(self,dx,dy):
-        self.__rectangle.centerx=self.__coordinates[0]+dx
-        self.__rectangle.centery=self.__coordinates[1]+dy
-        self.__coordinates=[self.__rectangle.centerx,self.__rectangle.centery]
+        self.rectangle.centerx= self.__coordinates[0] + dx
+        self.rectangle.centery= self.__coordinates[1] + dy
+        self.__coordinates=[self.rectangle.centerx, self.rectangle.centery]
         self.__movmentPoints-=m.sqrt((dx**2)+(dy**2))
         if self.__movmentPoints<=0:
             self.__movmentPoints=self.__stats[1]
@@ -59,6 +59,3 @@ def unitStatReader(unitName):
     stats=file.readline().strip().split(';')
     file.close()
     return(stats)
-
-
-tank=unit("tank")

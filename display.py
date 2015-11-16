@@ -1,5 +1,6 @@
 import pygame as pg
 from pygame.locals import *
+import units as U
 import random as rd
 import time, sys
 import math as m
@@ -22,6 +23,8 @@ def window():
 
 
 screen,mapDisplay,unitInfo,turnInfo=window()
+tank=U.unit("tank")
+fond=U.imageLoader("terrain.jpg")
 mapDisplay.fill((0,255,255))
 unitInfo.fill((255,0,255))
 turnInfo.fill((255,255,0))
@@ -29,4 +32,6 @@ while(1):
     for event in pg.event.get():
                     if event.type == pg.QUIT:
                         pg.display.quit()
+    mapDisplay.blit(fond,fond.get_rect())
+    mapDisplay.blit(tank.texture,tank.rectangle)
     pg.display.flip()
