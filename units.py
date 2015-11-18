@@ -7,7 +7,7 @@ class unit(object):
         self.__hp=self.__stats[0]
         self.__movmentPoints=self.__stats[1]
         self.__attackPoints=self.__stats[2]
-        self.texture=imageLoader("./units/"+name+".png")
+        self.texture=imageLoader("./units/"+name+"/"+name+".png")
         self.rectangle=self.texture.get_rect()
         self.__coordinates=[self.rectangle.centerx, self.rectangle.centery]
         self.__isTurnOver=False
@@ -54,7 +54,7 @@ def imageLoader(fichier):
     return(image)
 
 def unitStatReader(unitName):
-    path="./units/"+unitName+".cz"
+    path="./units/"+unitName+"/"+unitName+".cz"
     file = open(path,"r")
     stats=file.readline().strip().split(';')
     file.close()

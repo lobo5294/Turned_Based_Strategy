@@ -24,7 +24,11 @@ def window():
 
 screen,mapDisplay,unitInfo,turnInfo=window()
 tank=U.unit("tank")
-fond=U.imageLoader("terrain.jpg")
+soldier=U.unit("soldier")
+soldier.rectangle.top=32
+sniper=U.unit("sniper")
+sniper.rectangle.top=64
+fond=U.imageLoader("textures/terrain.jpg")
 mapDisplay.fill((0,255,255))
 unitInfo.fill((255,0,255))
 turnInfo.fill((255,255,0))
@@ -34,4 +38,6 @@ while(1):
                         pg.display.quit()
     mapDisplay.blit(fond,fond.get_rect())
     mapDisplay.blit(tank.texture,tank.rectangle)
+    mapDisplay.blit(soldier.texture,soldier.rectangle)
+    mapDisplay.blit(sniper.texture,sniper.rectangle)
     pg.display.flip()
