@@ -38,10 +38,10 @@ pas=48
 click=0
 
 
-soldier.rectangle=(19+3*pas,19+3*pas,32,32)
-sniper.rectangle=(19+5*pas,19+5*pas,32,32)
-tank.rectangle=(19+7*pas,19+3*pas,32,32)
-mapDisplay.blit(soldier.texture,soldier.rectangle)
+soldier.__rectangle=(19 + 3 * pas, 19 + 3 * pas, 32, 32)
+sniper.__rectangle=(19 + 5 * pas, 19 + 5 * pas, 32, 32)
+tank.__rectangle=(19 + 7 * pas, 19 + 3 * pas, 32, 32)
+mapDisplay.blit(soldier.texture, soldier.__rectangle)
 
 unit=0
 #######################################################################################
@@ -58,19 +58,19 @@ while(1):
 
 
                 
-            if click==1 and mov.test_coords(pg.mouse.get_pos()[0],pg.mouse.get_pos()[1],soldier.rectangle[0],soldier.rectangle[1],2,pas):
+            if click==1 and mov.test_coords(pg.mouse.get_pos()[0], pg.mouse.get_pos()[1], soldier.__rectangle[0], soldier.__rectangle[1], 2, pas):
                 
-                mov.zone_mov(mapDisplay,soldier.rectangle[0],soldier.rectangle[1],2,pas,(0,0,0))
-                move=mov.pos_diff(pg.mouse.get_pos()[0],pg.mouse.get_pos()[1],soldier.rectangle[0],soldier.rectangle[1],pas)
-                soldier.rectangle=(soldier.rectangle[0]+move[0]*pas,soldier.rectangle[1]+move[1]*pas,32,32)
+                mov.zone_mov(mapDisplay, soldier.__rectangle[0], soldier.__rectangle[1], 2, pas, (0, 0, 0))
+                move=mov.pos_diff(pg.mouse.get_pos()[0], pg.mouse.get_pos()[1], soldier.__rectangle[0], soldier.__rectangle[1], pas)
+                soldier.__rectangle=(soldier.__rectangle[0] + move[0] * pas, soldier.__rectangle[1] + move[1] * pas, 32, 32)
     
             else:
                 click=0
-                mov.zone_mov(mapDisplay,soldier.rectangle[0],soldier.rectangle[1],2,pas,(0,0,0))
+                mov.zone_mov(mapDisplay, soldier.__rectangle[0], soldier.__rectangle[1], 2, pas, (0, 0, 0))
                     
-            if  mov.test_coords(pg.mouse.get_pos()[0],pg.mouse.get_pos()[1],soldier.rectangle[0],soldier.rectangle[1],0,pas):
+            if  mov.test_coords(pg.mouse.get_pos()[0], pg.mouse.get_pos()[1], soldier.__rectangle[0], soldier.__rectangle[1], 0, pas):
                 click=1
-                mov.zone_mov(mapDisplay,soldier.rectangle[0],soldier.rectangle[1],2,pas,(255,0,0))
+                mov.zone_mov(mapDisplay, soldier.__rectangle[0], soldier.__rectangle[1], 2, pas, (255, 0, 0))
 
         if event.type == pg.QUIT:
               pg.display.quit()
@@ -80,7 +80,7 @@ while(1):
         mapDisplay.blit(fond,fond.get_rect())
         mov.grid(mapDisplay,fond.get_rect().size[0],fond.get_rect().size[1],48)
         
-    mapDisplay.blit(tank.texture,tank.rectangle)
-    mapDisplay.blit(soldier.texture,soldier.rectangle)
-    mapDisplay.blit(sniper.texture,sniper.rectangle)
+    mapDisplay.blit(tank.texture, tank.__rectangle)
+    mapDisplay.blit(soldier.texture, soldier.__rectangle)
+    mapDisplay.blit(sniper.texture, sniper.__rectangle)
     pg.display.flip()

@@ -8,16 +8,16 @@ class unit(object):
         self.__movmentPoints=self.__stats[1]
         self.__attackPoints=self.__stats[2]
         self.texture=imageLoader("./units/"+name+"/"+name+".png")
-        self.rectangle=self.texture.get_rect()
-        self.__coordinates=[self.rectangle.centerx, self.rectangle.centery]
-        self.__isTurnOver=False
+        self.__rectangle=self.texture.get_rect()
+        self.coordinates=[self.__rectangle.x, self.__rectangle.y]
+        self.isTurnOver=False
         self.__isDead=False
 
     def move(self,dx,dy):
-        self.rectangle.centerx= self.__coordinates[0] + dx
-        self.rectangle.centery= self.__coordinates[1] + dy
-        self.__coordinates=[self.rectangle.centerx, self.rectangle.centery]
-        self.__movmentPoints-=m.sqrt((dx**2)+(dy**2))
+        self.__rectangle.centerx= dx
+        self.__rectangle.centery= dy
+        self.__movmentPoints-=m.sqrt(((self.__coordinates[0]-dx)**2)+((self.__coordinates[1]-dy)**2))
+        self.coordinates=[self.__rectangle.centerx, self.__rectangle.centery]
         if self.__movmentPoints<=0:
             self.__movmentPoints=self.__stats[1]
             self.__isTurnOver=True
@@ -47,7 +47,6 @@ class unit(object):
     def newTurn(self):
         self.__movmentPoints=self.__stats[1]
         self.__isTurnOver=False
-
 
 
 
